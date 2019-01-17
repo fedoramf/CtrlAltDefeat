@@ -11,9 +11,9 @@ namespace CtrlAltDefeat.Controllers
     public class ResultsController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Index(string fileName = "Empty")
         {
-            ViewData["Message"] = "Your custom results page.";
+            ViewData["Filename"] = fileName;
             return View();
         }
     }
