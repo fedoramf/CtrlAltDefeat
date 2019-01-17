@@ -6,9 +6,6 @@ gulp.task('sass', function () {
     return gulp.src('./wwwroot/sass/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('./wwwroot/css/'))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
 });
 
 gulp.task('watch', ['sass'], function () {
