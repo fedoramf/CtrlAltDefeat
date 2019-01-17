@@ -1,0 +1,11 @@
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\bin\Debug\netcoreapp2.0\CtrlAltDefeat.deps.json
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\bin\Debug\netcoreapp2.0\CtrlAltDefeat.runtimeconfig.json
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\bin\Debug\netcoreapp2.0\CtrlAltDefeat.runtimeconfig.dev.json
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\bin\Debug\netcoreapp2.0\CtrlAltDefeat.dll
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\bin\Debug\netcoreapp2.0\CtrlAltDefeat.pdb
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\obj\Debug\netcoreapp2.0\CtrlAltDefeat.csprojResolveAssemblyReference.cache
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\obj\Debug\netcoreapp2.0\CtrlAltDefeat.csproj.CoreCompileInputs.cache
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\obj\Debug\netcoreapp2.0\CtrlAltDefeat.AssemblyInfoInputs.cache
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\obj\Debug\netcoreapp2.0\CtrlAltDefeat.AssemblyInfo.cs
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\obj\Debug\netcoreapp2.0\CtrlAltDefeat.dll
+D:\Hackathon2019\CtrlAltDefeat\CtrlAltDefeat\obj\Debug\netcoreapp2.0\CtrlAltDefeat.pdb
