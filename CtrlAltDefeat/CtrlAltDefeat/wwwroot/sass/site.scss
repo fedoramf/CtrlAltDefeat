@@ -67,12 +67,15 @@ body {
         height: 100%;
         overflow: scroll;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
     .chat-bubble {
         background-color: $grey;
         padding: 7px;
-        margin: 20px;
+        margin: 5px 20px;
         border-radius: 5px;
         border: 1px solid $border-grey;
         position: relative;
