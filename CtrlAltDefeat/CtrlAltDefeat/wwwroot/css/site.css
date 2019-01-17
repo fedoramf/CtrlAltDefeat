@@ -1,6 +1,17 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+    margin: 0;
+    background-color: #F2F2F2;
+}
+
+.main {
+    background-image: url("../images/bc-bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 4400px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 /* Wrapping element */
