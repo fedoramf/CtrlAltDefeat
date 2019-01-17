@@ -8,6 +8,9 @@ body {
     height: 4400px;
     max-width: 1440px;
     margin: 0 auto; }
+    body .main.custom {
+      background-image: url("../images/custom-cards.png");
+      background-size: cover; }
 
 .chatbot {
   position: fixed;
