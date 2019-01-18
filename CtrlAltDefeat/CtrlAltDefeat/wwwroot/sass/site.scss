@@ -205,6 +205,10 @@ body {
     bottom: 0;
     right: 30px;
 
+    p {
+        margin: 0;
+    }
+
     &::after {
         content: '';
         height: 100vh;
@@ -231,6 +235,7 @@ body {
         border-top-left-radius: 20px;
         background: $white;
         padding: 0;
+        padding-bottom: 40px;
     }
 
     .cht-top {
@@ -258,8 +263,8 @@ body {
     .chatbox-chat {
         width: 100%;
         height: 100%;
-        overflow: scroll;
-        overflow-y: auto;
+        overflow: hidden;
+        /*overflow-y: auto;*/
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -294,6 +299,7 @@ body {
     .chat-inputs {
         padding: 7px;
         margin: 0 20px;
+        transition: all 0.2s linear;
 
         input {
             margin: 5px 0;
@@ -309,7 +315,7 @@ body {
             border: 0;
             background: $blue;
             width: 100%;
-            padding: 10px;
+            padding: 5px 10px;
             color: $white;
             border-radius: 5px;
             margin: 10px 0;
@@ -347,7 +353,7 @@ body {
     }
 
     .bubble-hide {
-        visibility: none;
+        visibility: hidden;
         opacity: 0;
         transform: translateY(20px);
     }

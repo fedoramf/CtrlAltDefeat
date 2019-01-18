@@ -91,29 +91,29 @@ var Norman = function () {
     function triggerName() {
         createChatBubble("", messages.needName);
         var customId = "name";
-        var placeholder = "name";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Name";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerPosition(name) {
         createChatBubble("", messages.needPosition);
         var customId = "position";
-        var placeholder = "position";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Position";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerEmail() {
         createChatBubble("", messages.needEmail);
         var customId = "email";
-        var placeholder = "email";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="email" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Email";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerPhone() {
         createChatBubble("", messages.needPhone);
         var customId = "phone";
-        var placeholder = "phone";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="tel" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Phone";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerExit() {
@@ -169,7 +169,10 @@ var Norman = function () {
     };
 
     function createInputBubbles(customId, placeholder) {
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+        $(".chatbox-chat").append('<div class="chat-inputs bubble-hide"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Done!</button></div>');
+        setTimeout(function () {
+            $(".chat-inputs").addClass("bubble-show");
+        }, 200);
     }
 
     function eventHookups() {
@@ -193,11 +196,13 @@ var Norman = function () {
 
         $('body').on('click', 'span.chat-bubble-option.colors.primary', function (el) {
             chosenPrimaryColor = $(this).attr("data-color");
+            $(this).addClass('chosen');
             triggerSecondaryColours();
         });
 
         $('body').on('click', 'span.chat-bubble-option.colors.secondary', function (el) {
             chosenSecondaryColor = $(this).attr("data-color");
+            $(this).addClass('chosen');
             triggerName();
         });
 
@@ -3755,29 +3760,34 @@ exports.isHtml = function(str) {
 
 },{"./parse":14,"dom-serializer":26}],17:[function(require,module,exports){
 module.exports={
-  "_from": "cheerio@^0.22.0",
+  "_args": [
+    [
+      "cheerio@0.22.0",
+      "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat"
+    ]
+  ],
+  "_from": "cheerio@0.22.0",
   "_id": "cheerio@0.22.0",
   "_inBundle": false,
   "_integrity": "sha1-qbqoYKP5tZWmuBsahocxIe06Jp4=",
   "_location": "/cheerio",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cheerio@^0.22.0",
+    "raw": "cheerio@0.22.0",
     "name": "cheerio",
     "escapedName": "cheerio",
-    "rawSpec": "^0.22.0",
+    "rawSpec": "0.22.0",
     "saveSpec": null,
-    "fetchSpec": "^0.22.0"
+    "fetchSpec": "0.22.0"
   },
   "_requiredBy": [
     "/meta-scraper"
   ],
   "_resolved": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz",
-  "_shasum": "a9baa860a3f9b595a6b81b1a86873121ed3a269e",
-  "_spec": "cheerio@^0.22.0",
-  "_where": "C:\\Users\\vrusu\\Documents\\Hackathon\\CtrlAltDefeat\\CtrlAltDefeat\\CtrlAltDefeat\\node_modules\\meta-scraper",
+  "_spec": "0.22.0",
+  "_where": "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat",
   "author": {
     "name": "Matt Mueller",
     "email": "mattmuelle@gmail.com",
@@ -3786,7 +3796,6 @@ module.exports={
   "bugs": {
     "url": "https://github.com/cheeriojs/cheerio/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "css-select": "~1.2.0",
     "dom-serializer": "~0.1.0",
@@ -3805,7 +3814,6 @@ module.exports={
     "lodash.reject": "^4.4.0",
     "lodash.some": "^4.4.0"
   },
-  "deprecated": false,
   "description": "Tiny, fast, and elegant implementation of core jQuery designed specifically for the server",
   "devDependencies": {
     "benchmark": "^2.1.0",
