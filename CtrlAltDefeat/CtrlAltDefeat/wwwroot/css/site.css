@@ -9,6 +9,7 @@ body {
     max-width: 1440px;
     margin: 0 auto; }
     body .main.custom {
+      display: none;
       background-image: url("../images/custom-cards.png");
       background-size: cover;
       position: relative; }

@@ -18,6 +18,7 @@ body {
         margin: 0 auto;
 
         &.custom {
+            display: none;
             background-image: url("../images/custom-cards.png");
             background-size: cover;
             position: relative;

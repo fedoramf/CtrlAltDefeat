@@ -45,6 +45,49 @@ var Norman = function () {
     };
 
 
+    function sendData(data) {
+        console.log(data);
+        $(".main.home").css("display", "none");
+        $(".main.custom").css("display", "block");
+        $(".chatbot").css("display", "none");
+
+     //   var postURL = "http://localhost:19470/Results/SendMetaData";
+        //data = JSON.stringify(data);
+        populateFields(data);
+
+    }
+
+    function hexToRgbA(hex) {
+        var c;
+        if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+            c = hex.substring(1).split('');
+            if (c.length == 3) {
+                c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            c = '0x' + c.join('');
+            return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.6)';
+        }
+    }
+
+    function populateFields(data) {
+        var $cards = $(".custom-cards .card-container");
+        var opacity = Math.floor(Math.random() * Math.floor(1));
+        var bg2 = hexToRgbA(data.bgColor);
+
+        $cards.each(function (i, el) {
+            $(el).find("p").css("color", data.textColor);
+            $(el).find(".color-1").css("background", data.bgColor);
+            $(el).find(".color-2").css("background", "rgba(" + data.bgColor + ", " + opacity + ")");
+            $(el).find(".color-2").css("background", bg2);
+            $(el).find("p.title").text(data.position);
+            $(el).find("p.name").text(data.name);
+            $(el).find("p.email").text(data.email);
+            $(el).find("p.phoneNumber").text(data.phoneNumber);
+            $(el).find("p.website").text(data.website);
+
+        });
+
+    }
 
     function thinkingBubble(toggle) {
         if (toggle === true) {
@@ -118,16 +161,20 @@ var Norman = function () {
 
     function triggerExit() {
         createChatBubble("", messages.triggerExit);
-        console.log(website);
-        console.log(chosenPrimaryColor);
-        console.log(chosenSecondaryColor);
-        console.log(name);
-        console.log(position);
-        console.log(email);
+
+        var data = {
+            bgColor: chosenPrimaryColor,
+            textColor: chosenSecondaryColor,
+            website: website,
+            phoneNumber: phoneNumber,
+            email: email,
+            position: position,
+            name: name
+        };
+
+        sendData(data);
         // make post here
     }
-
-
 
     function handleResponse(data) {
         primaryColors = data.coloursBg;
