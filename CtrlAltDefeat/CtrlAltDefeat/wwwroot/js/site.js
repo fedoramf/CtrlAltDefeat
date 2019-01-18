@@ -46,15 +46,13 @@ var Norman = function () {
 
 
     function sendData(data) {
-        console.log(data);
-        $(".main.home").css("display", "none");
-        $(".main.custom").css("display", "block");
-        $(".chatbot").css("display", "none");
-
-     //   var postURL = "http://localhost:19470/Results/SendMetaData";
-        //data = JSON.stringify(data);
+        thinkingBubble(true);
+        setTimeout(function () {
+            $(".main.home").css("display", "none");
+            $(".main.custom").css("display", "block");
+            $(".chatbot").css("display", "none");
+        }, 5000);
         populateFields(data);
-
     }
 
     function hexToRgbA(hex) {
@@ -70,6 +68,7 @@ var Norman = function () {
     }
 
     function populateFields(data) {
+
         var $cards = $(".custom-cards .card-container");
         var opacity = Math.floor(Math.random() * Math.floor(1));
         var bg2 = hexToRgbA(data.bgColor);
@@ -3807,34 +3806,29 @@ exports.isHtml = function(str) {
 
 },{"./parse":14,"dom-serializer":26}],17:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "cheerio@0.22.0",
-      "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat"
-    ]
-  ],
-  "_from": "cheerio@0.22.0",
+  "_from": "cheerio@^0.22.0",
   "_id": "cheerio@0.22.0",
   "_inBundle": false,
   "_integrity": "sha1-qbqoYKP5tZWmuBsahocxIe06Jp4=",
   "_location": "/cheerio",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "cheerio@0.22.0",
+    "raw": "cheerio@^0.22.0",
     "name": "cheerio",
     "escapedName": "cheerio",
-    "rawSpec": "0.22.0",
+    "rawSpec": "^0.22.0",
     "saveSpec": null,
-    "fetchSpec": "0.22.0"
+    "fetchSpec": "^0.22.0"
   },
   "_requiredBy": [
     "/meta-scraper"
   ],
   "_resolved": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz",
-  "_spec": "0.22.0",
-  "_where": "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat",
+  "_shasum": "a9baa860a3f9b595a6b81b1a86873121ed3a269e",
+  "_spec": "cheerio@^0.22.0",
+  "_where": "C:\\Users\\vrusu\\Documents\\Hackathon\\CtrlAltDefeat\\CtrlAltDefeat\\CtrlAltDefeat\\node_modules\\meta-scraper",
   "author": {
     "name": "Matt Mueller",
     "email": "mattmuelle@gmail.com",
@@ -3843,6 +3837,7 @@ module.exports={
   "bugs": {
     "url": "https://github.com/cheeriojs/cheerio/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "css-select": "~1.2.0",
     "dom-serializer": "~0.1.0",
@@ -3861,6 +3856,7 @@ module.exports={
     "lodash.reject": "^4.4.0",
     "lodash.some": "^4.4.0"
   },
+  "deprecated": false,
   "description": "Tiny, fast, and elegant implementation of core jQuery designed specifically for the server",
   "devDependencies": {
     "benchmark": "^2.1.0",
