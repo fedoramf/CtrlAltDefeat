@@ -7,22 +7,6 @@ metaScraper('https://www.dwcchiropractic.com/')
 
 //var urlToQuery = encodeURIComponent("https://www.dwcchiropractic.com/");
 
-//$.ajax({
-//    dataType: "jsonp",
-//    url: "http://localhost:5000/query?url=" + urlToQuery,
-//    success: function (data) {
-//        console.log(data);
-//        if (data["error"]) {
-//            alert("Error: " + data["error"]);
-//            return;
-//        }
-//        //PROCESS the result
-//    },
-//    timeout: 20000
-//}).fail(function () {
-//    console.log("fail");
-//    //alert("Could not query site, the service might be down, please try again later.");
-//    });
 
 //console.log(urlToQuery);
 //$.get(decodeURIComponent(urlToQuery), function (data) {
@@ -35,72 +19,33 @@ metaScraper('https://www.dwcchiropractic.com/')
 
 
 
-
-
-
-
-
-//var messages = {
-//    yesDesign: "Ok, Let's get Started",
-//    noDesign: "No Worries, I'll be here if you need me.",
-//    website: "What's your website?",
-//    weFoundPrimary: "These are the colours that I found, please choose one"
-//};
-
-//function createChatBubble(customId, message) {
-//    $(".chatbox-chat").append('<div class="chat-bubble bubble-hide"id="' + customId + '"><p>' + message + '</p></div>');
-//    setTimeout(function () {
-//        $(".chat-bubble").addClass("bubble-show")
-//    }, 200)
-//};
-
-//function createInputBubbles(customId, placeholder) {
-//    $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"></div>');
-//}
-
-//$("#next-design").children('span').on("click", function () {
-//    if ($(this).data("attribute") == true) {
-//        createChatBubble("", messages.yesDesign);
-
-//        $("#next-design").children('span').css("pointer-events", "none");
-
-//        setTimeout(function () {
-//            createChatBubble("", messages.website)
-//        }, 1000)
-
-//        setTimeout(function () {
-//            createInputBubbles("website-url", "Website")
-//        }, 2000)
-
-//    } else {
-//        createChatBubble("", messages.noDesign)
-//    }
-//});
-
-
-
-
-
 var Norman = function () {
     var website;
     var primaryColors;
     var chosenPrimaryColor;
     var secondaryColors;
     var chosenSecondaryColor;
+    var name;
+    var position;
+    var email;
+    var phoneNumber;
 
     var messages = {
         yesDesign: "Ok, Let's get Started",
         noDesign: "No Worries, I'll be here if you need me.",
         website: "What's your website?",
         weFoundPrimary: "These are the colours that I found, please choose one for your background",
-        weFoundSecondary: "Great! Now, what color should the text be?"
+        weFoundSecondary: "Great! Now, what color should the text be?",
+        needName: "Awesome! What's your full name?",
+        needPosition: "Thanks, what is your position?",
+        needEmail: "What email should people reach you at?",
+        needPhone: "Which phone number should people reach you at?",
+        triggerExit: "Great! I think I have a few great options for you, hold on!"
     };
 
 
 
     function thinkingBubble(toggle) {
-        console.log(toggle);
-        console.log("in");
         if (toggle === true) {
             $(".chatbox-chat").append('<div class="chat-bubble bubble-hide thinking"><div class="loader"><span class="col-1"></span><span class="col-2"></span><span class="col-3"></span></div></div>');
             setTimeout(function () {
@@ -142,33 +87,62 @@ var Norman = function () {
         }, 200);
     }
 
-    function triggerWebsite() {
-        website = website.replace(/^https?\:\/\//i, "");
-        website = website.replace(/\/$/, "");
+    function triggerName() {
+        createChatBubble("", messages.needName);
+        var customId = "name";
+        var placeholder = "name";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+    }
+
+    function triggerPosition(name) {
+        createChatBubble("", messages.needPosition);
+        var customId = "position";
+        var placeholder = "position";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+    }
+
+    function triggerEmail() {
+        createChatBubble("", messages.needEmail);
+        var customId = "email";
+        var placeholder = "email";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="email" placeholder="' + placeholder + '"><button>Send</button></div>');
+    }
+
+    function triggerPhone() {
+        createChatBubble("", messages.needPhone);
+        var customId = "phone";
+        var placeholder = "phone";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="tel" placeholder="' + placeholder + '"><button>Send</button></div>');
+    }
+
+    function triggerExit() {
+        createChatBubble("", messages.triggerExit);
         console.log(website);
         console.log(chosenPrimaryColor);
         console.log(chosenSecondaryColor);
-
+        console.log(name);
+        console.log(position);
+        console.log(email);
+        // make post here
     }
 
 
 
     function handleResponse(data) {
-        console.log(data);
         primaryColors = data.coloursBg;
         secondaryColors = data.coloursText;
+        website = website.replace(/^https?\:\/\//i, "");
+        website = website.replace(/\/$/, "");
         triggerPrimaryColurs();
     }
 
 
     function scrapeSite(website) {
         thinkingBubble(true);
-        console.log('in scrapesite');
         $.ajax({
             dataType: "jsonp",
             url: "http://localhost:5000/query?url=" + website,
             success: function (data) {
-                console.log(data);
                 if (data["error"]) {
                     alert("Error: " + data["error"]);
                     thinkingBubble(false);
@@ -222,18 +196,36 @@ var Norman = function () {
         });
 
         $('body').on('click', 'span.chat-bubble-option.colors.secondary', function (el) {
-            console.log(this);
             chosenSecondaryColor = $(this).attr("data-color");
-            triggerWebsite();
+            triggerName();
         });
 
         //INPUT WEBSITE
         $(document).on("click", "#website-url>button", function () {
-            console.log("clicked");
             website = $("#website-url input").val();
             scrapeSite(website);
         });
+        $(document).on("click", "#name>button", function () {
+            name = $("#name input").val();
+            triggerPosition();
+        });
+
+        $(document).on("click", "#position>button", function () {
+            position = $("#position input").val();
+            triggerEmail();
+        });
+
+        $(document).on("click", "#email>button", function () {
+            email = $("#email input").val();
+            triggerPhone();
+        });
+
+        $(document).on("click", "#phone>button", function () {
+            phoneNumber = $("#phone input").val();
+            triggerExit();
+        });
     }
+
 
     function init() {
         // $(document).ready(function(){
