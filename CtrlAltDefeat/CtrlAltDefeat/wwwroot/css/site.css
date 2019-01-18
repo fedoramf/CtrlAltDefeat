@@ -8,6 +8,115 @@ body {
     height: 4400px;
     max-width: 1440px;
     margin: 0 auto; }
+    body .main.custom {
+      background-image: url("../images/custom-cards.png");
+      background-size: cover;
+      position: relative; }
+      body .main.custom .custom-cards {
+        width: 1310px;
+        height: 433px;
+        position: absolute;
+        left: 40px;
+        top: 335px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px; }
+        body .main.custom .custom-cards .card-container {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          position: relative; }
+          body .main.custom .custom-cards .card-container .save {
+            background: #a30000;
+            border-radius: 4px;
+            transition: all 0.2s ease-out;
+            overflow: hidden;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            height: 42px;
+            margin: 20px 0;
+            min-width: 210px;
+            backface-visibility: visible;
+            border: none;
+            color: #FFFFFF;
+            font-size: 16px;
+            transform: translateY(0);
+            transition: all 0.15s ease;
+            font-weight: bold; }
+          body .main.custom .custom-cards .card-container .edit {
+            width: 60px;
+            height: 30px;
+            border: 1px solid #E7E7E7;
+            border-radius: 4px;
+            background-color: #FFFFFF;
+            color: #444444;
+            cursor: pointer;
+            text-align: center;
+            line-height: 30px;
+            font-family: "HelveticaNeueMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: normal;
+            font-size: 13px;
+            float: left;
+            margin-left: 20px;
+            display: none;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            position: absolute;
+            z-index: 2; }
+          body .main.custom .custom-cards .card-container .card-option {
+            width: 80%;
+            margin: 0 auto;
+            height: 200px;
+            margin-top: 50px;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden; }
+            body .main.custom .custom-cards .card-container .card-option:hover .edit {
+              display: block; }
+            body .main.custom .custom-cards .card-container .card-option .bold {
+              font-weight: bold; }
+            body .main.custom .custom-cards .card-container .card-option img {
+              height: 70px;
+              width: 70px;
+              margin: 40px 0 15px; }
+            body .main.custom .custom-cards .card-container .card-option.card-1 {
+              display: flex; }
+              body .main.custom .custom-cards .card-container .card-option.card-1 .color-1 {
+                width: 40%;
+                background: #D46A6A; }
+              body .main.custom .custom-cards .card-container .card-option.card-1 .color-2 {
+                width: 60%;
+                background: #FFAAAA;
+                padding-top: 45px; }
+            body .main.custom .custom-cards .card-container .card-option.card-2 {
+              display: flex; }
+              body .main.custom .custom-cards .card-container .card-option.card-2 .color-1 {
+                width: 60%;
+                background: #77548A;
+                padding-top: 45px; }
+              body .main.custom .custom-cards .card-container .card-option.card-2 .color-2 {
+                width: 40%;
+                background: #9B8BA3; }
+            body .main.custom .custom-cards .card-container .card-option.card-3 {
+              display: flex;
+              background: #A8C272;
+              padding: 10px; }
+              body .main.custom .custom-cards .card-container .card-option.card-3 .color-1 {
+                background: #D9E5C1;
+                transform: rotate(29.7deg);
+                height: 190px;
+                width: 430px;
+                position: absolute;
+                right: -83px;
+                top: -78px; }
+              body .main.custom .custom-cards .card-container .card-option.card-3 .card-content {
+                z-index: 1;
+                width: 100%; }
+              body .main.custom .custom-cards .card-container .card-option.card-3 img {
+                margin: 10px; }
 
 .chatbot {
   position: fixed;
@@ -54,14 +163,18 @@ body {
     width: 100%;
     height: 100%;
     overflow: scroll;
-    overflow-y: auto; }
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; }
   .chatbot .chat-bubble {
     background-color: #f2f2f2;
     padding: 7px;
-    margin: 20px;
+    margin: 0px 20px 15px;
     border-radius: 5px;
     border: 1px solid #ececec;
-    position: relative; }
+    position: relative;
+    transition: all 0.2s ease-out; }
     .chatbot .chat-bubble:after {
       content: '';
       position: absolute;
@@ -85,7 +198,7 @@ body {
       border: 0;
       border-bottom: 1px solid gray; }
   .chatbot .chat-options {
-    margin: 20px 5px; }
+    margin: 9px 5px 23px; }
     .chatbot .chat-options .chat-bubble-option {
       display: inline-block;
       text-align: center;
@@ -97,6 +210,14 @@ body {
       cursor: pointer; }
       .chatbot .chat-options .chat-bubble-option:hover {
         background: rgba(0, 153, 204, 0.8); }
+  .chatbot .bubble-hide {
+    visibility: none;
+    opacity: 0;
+    transform: translateY(20px); }
+  .chatbot .bubble-show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px); }
   .chatbot ::-webkit-scrollbar {
     width: 10px; }
   .chatbot ::-webkit-scrollbar-track {
