@@ -21,6 +21,8 @@ namespace CtrlAltDefeat
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -41,10 +43,12 @@ namespace CtrlAltDefeat
 
             app.UseMvc(routes =>
             {
+                app.UseSession();
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            app.UseCookiePolicy();
         }
     }
 }
