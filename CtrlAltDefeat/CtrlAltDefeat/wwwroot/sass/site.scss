@@ -8,6 +8,7 @@ $white: #fff;
 body {
     margin: 0;
     background-color: #F2F2F2;
+    background: #222;
 
     .main {
         background-image: url("../images/bc-bg.png");
@@ -16,6 +17,7 @@ body {
         height: 4400px;
         max-width: 1440px;
         margin: 0 auto;
+        opacity: 0.6;
 
         &.custom {
             background-image: url("../images/custom-cards.png");
@@ -309,6 +311,12 @@ body {
                 background: transparentize($blue, 0.2);
             }
         }
+
+        .colors {
+            height: 70px;
+            margin: 0 10px;
+            border: 1px solid #e4e4e4;
+        }
     }
 
     .bubble-hide {
@@ -337,5 +345,37 @@ body {
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: opacify(#dedede, 0.5);
+    }
+}
+
+
+.loader {
+    span {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        animation-name: three-dots-loading;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-direction: alternate;
+        margin: 0 2px;
+    }
+
+    .col-1 {
+        animation-delay: 0s;
+        background-color: #fff;
+    }
+
+    .col-2 {
+        animation-delay: 0s;
+        background-color: #ccc;
+    }
+
+    .col-3 {
+        animation-delay: -2s;
+        background-color: #999;
     }
 }
