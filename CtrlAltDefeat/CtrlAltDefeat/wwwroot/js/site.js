@@ -149,7 +149,6 @@ var Norman = function () {
         console.log(website);
         console.log(chosenPrimaryColor);
         console.log(chosenSecondaryColor);
-
     }
 
 
@@ -219,12 +218,13 @@ var Norman = function () {
 
         $('body').on('click', 'span.chat-bubble-option.colors.primary', function (el) {
             chosenPrimaryColor = $(this).attr("data-color");
+            $(this).addClass('chosen');
             triggerSecondaryColours();
         });
 
         $('body').on('click', 'span.chat-bubble-option.colors.secondary', function (el) {
-            console.log(this);
             chosenSecondaryColor = $(this).attr("data-color");
+            $(this).addClass('chosen');
             triggerWebsite();
         });
 
@@ -3763,29 +3763,34 @@ exports.isHtml = function(str) {
 
 },{"./parse":14,"dom-serializer":26}],17:[function(require,module,exports){
 module.exports={
-  "_from": "cheerio@^0.22.0",
+  "_args": [
+    [
+      "cheerio@0.22.0",
+      "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat"
+    ]
+  ],
+  "_from": "cheerio@0.22.0",
   "_id": "cheerio@0.22.0",
   "_inBundle": false,
   "_integrity": "sha1-qbqoYKP5tZWmuBsahocxIe06Jp4=",
   "_location": "/cheerio",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cheerio@^0.22.0",
+    "raw": "cheerio@0.22.0",
     "name": "cheerio",
     "escapedName": "cheerio",
-    "rawSpec": "^0.22.0",
+    "rawSpec": "0.22.0",
     "saveSpec": null,
-    "fetchSpec": "^0.22.0"
+    "fetchSpec": "0.22.0"
   },
   "_requiredBy": [
     "/meta-scraper"
   ],
   "_resolved": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz",
-  "_shasum": "a9baa860a3f9b595a6b81b1a86873121ed3a269e",
-  "_spec": "cheerio@^0.22.0",
-  "_where": "C:\\Users\\vrusu\\Documents\\Hackathon\\CtrlAltDefeat\\CtrlAltDefeat\\CtrlAltDefeat\\node_modules\\meta-scraper",
+  "_spec": "0.22.0",
+  "_where": "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat",
   "author": {
     "name": "Matt Mueller",
     "email": "mattmuelle@gmail.com",
@@ -3794,7 +3799,6 @@ module.exports={
   "bugs": {
     "url": "https://github.com/cheeriojs/cheerio/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "css-select": "~1.2.0",
     "dom-serializer": "~0.1.0",
@@ -3813,7 +3817,6 @@ module.exports={
     "lodash.reject": "^4.4.0",
     "lodash.some": "^4.4.0"
   },
-  "deprecated": false,
   "description": "Tiny, fast, and elegant implementation of core jQuery designed specifically for the server",
   "devDependencies": {
     "benchmark": "^2.1.0",
