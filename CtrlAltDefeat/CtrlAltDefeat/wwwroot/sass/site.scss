@@ -216,15 +216,19 @@ body {
         height: 100%;
         overflow: scroll;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
     .chat-bubble {
         background-color: $grey;
         padding: 7px;
-        margin: 20px;
+        margin: 0px 20px 15px;
         border-radius: 5px;
         border: 1px solid $border-grey;
         position: relative;
+        transition: all 0.2s ease-out;
 
 
         &:after {
@@ -257,7 +261,7 @@ body {
     }
 
     .chat-options {
-        margin: 20px 5px;
+        margin: 9px 5px 23px;
 
         .chat-bubble-option {
             display: inline-block;
@@ -273,6 +277,18 @@ body {
                 background: transparentize($blue, 0.2);
             }
         }
+    }
+
+    .bubble-hide {
+        visibility: none;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .bubble-show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0px);
     }
 
 
