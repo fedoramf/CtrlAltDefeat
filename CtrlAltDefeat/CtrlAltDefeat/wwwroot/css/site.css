@@ -152,6 +152,8 @@ body {
   /* Track */
   /* Handle */
   /* Handle on hover */ }
+  .chatbot p {
+    margin: 0; }
   .chatbot::after {
     content: '';
     height: 100vh;
@@ -174,7 +176,8 @@ body {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     background: #fff;
-    padding: 0; }
+    padding: 0;
+    padding-bottom: 40px; }
   .chatbot .cht-top {
     background: #CC0000;
     /* fallback for old browsers */
@@ -199,8 +202,8 @@ body {
   .chatbot .chatbox-chat {
     width: 100%;
     height: 100%;
-    overflow: scroll;
-    overflow-y: auto;
+    overflow: hidden;
+    /*overflow-y: auto;*/
     display: flex;
     flex-direction: column;
     justify-content: flex-end; }
@@ -227,7 +230,8 @@ body {
       margin-left: -15px; }
   .chatbot .chat-inputs {
     padding: 7px;
-    margin: 0 20px; }
+    margin: 0 20px;
+    transition: all 0.2s linear; }
     .chatbot .chat-inputs input {
       margin: 5px 0;
       padding: 10px;
@@ -240,7 +244,7 @@ body {
       border: 0;
       background: #0099CC;
       width: 100%;
-      padding: 10px;
+      padding: 5px 10px;
       color: #fff;
       border-radius: 5px;
       margin: 10px 0;
@@ -265,7 +269,7 @@ body {
   .chatbot .chosen {
     border: 3px solid #0099CC !important; }
   .chatbot .bubble-hide {
-    visibility: none;
+    visibility: hidden;
     opacity: 0;
     transform: translateY(20px); }
   .chatbot .bubble-show {
