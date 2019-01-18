@@ -32,7 +32,7 @@ namespace CtrlAltDefeat.Controllers
                 if (formFile.Length > 0)
                 {
                     var uploads = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                    uniqueFileName = GetUniqueFileName(formFile.FileName);
+                    uniqueFileName = formFile.FileName;
                     var fullPath = Path.Combine(uploads, uniqueFileName);
                     formFile.CopyTo(new FileStream(fullPath, FileMode.Create));
                 }
@@ -41,7 +41,7 @@ namespace CtrlAltDefeat.Controllers
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            return RedirectToAction("Index", "Results", new { filename = uniqueFileName});
+            return RedirectToAction("Index", "Home");
         }
 
         private string GetUniqueFileName(string fileName)

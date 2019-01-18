@@ -22,6 +22,21 @@
                 <span class="chat-bubble-option" data-attribute="true">👍</span>
                 <span class="chat-bubble-option" data-attribute="false">👎</span>
             </div>
+            <div class="image-upload">
+                <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <p>Upload one or more files using this form:</p>
+                            <input type="file" name="files" multiple />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="submit" value="Upload" id="close-upload"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -35,7 +50,7 @@
             <h3>Option 1</h3>
             <div class="card-option card-1">
                 <div class="color-1">
-                    <img src="~/images/@ViewData["Filename"]" />
+                    <img src="~/images/logo.jpg" />
                     <p class="title bold">Title</p>
                 </div>
                 <div class="color-2">
@@ -60,7 +75,7 @@
                     <p class="website"></p>
                 </div>
                 <div class="color-2">
-                    <img src="~/images/@ViewData["Filename"]" />
+                    <img src="~/images/logo.jpg" />
                     <p class="title bold"></p>
                 </div>
                 <button class="edit">Edit</button>
@@ -76,7 +91,7 @@
                 </div>
                 <div class="card-content">
                     <p class="title bold"></p>
-                    <img src="~/images/@ViewData["Filename"]" />
+                    <img src="~/images/logo.jpg" />
                     <p class="name"></p>
                     <p class="email"></p>
                     <p class="phoneNumber"></p>

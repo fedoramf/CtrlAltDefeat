@@ -41,7 +41,8 @@ var Norman = function () {
         needPosition: "Thanks, what is your position?",
         needEmail: "What email should people reach you at?",
         needPhone: "Which phone number should people reach you at?",
-        triggerExit: "Great! I think I have a few great options for you, hold on!"
+        triggerExit: "Great! I think I have a few great options for you, hold on!",
+        uploadImage: "Upload your logo."
     };
 
 
@@ -134,29 +135,35 @@ var Norman = function () {
     function triggerName() {
         createChatBubble("", messages.needName);
         var customId = "name";
-        var placeholder = "Your Name";
-        setTimeout(createInputBubbles(customId, placeholder), 1000);
+        var placeholder = "name";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
     }
 
     function triggerPosition(name) {
         createChatBubble("", messages.needPosition);
         var customId = "position";
-        var placeholder = "Your Position";
-        setTimeout(createInputBubbles(customId, placeholder), 1000);
+        var placeholder = "position";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
     }
 
     function triggerEmail() {
         createChatBubble("", messages.needEmail);
         var customId = "email";
-        var placeholder = "Your Email";
-        setTimeout(createInputBubbles(customId, placeholder), 1000);
+        var placeholder = "email";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="email" placeholder="' + placeholder + '"><button>Send</button></div>');
     }
 
     function triggerPhone() {
         createChatBubble("", messages.needPhone);
         var customId = "phone";
-        var placeholder = "Your Phone";
-        setTimeout(createInputBubbles(customId, placeholder), 1000);
+        var placeholder = "phone";
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="tel" placeholder="' + placeholder + '"><button>Send</button></div>');
+    }
+
+    function triggerUpload() {
+        createChatBubble("", messages.uploadImage);
+
+        $(".chatbox-chat").append('<div class="chat-inputs"id="upload-image"><button>Choose Image</button></div>');
     }
 
     function triggerExit() {
@@ -216,10 +223,7 @@ var Norman = function () {
     };
 
     function createInputBubbles(customId, placeholder) {
-        $(".chatbox-chat").append('<div class="chat-inputs bubble-hide"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Done!</button></div>');
-        setTimeout(function () {
-            $(".chat-inputs").addClass("bubble-show");
-        }, 200);
+        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
     }
 
     function eventHookups() {
@@ -243,13 +247,15 @@ var Norman = function () {
 
         $('body').on('click', 'span.chat-bubble-option.colors.primary', function (el) {
             chosenPrimaryColor = $(this).attr("data-color");
-            $(this).addClass('chosen');
             triggerSecondaryColours();
+        });
+
+        $('body').on('click', '#upload-image>button', function (el) {
+            $('.image-upload').css("display", "flex");
         });
 
         $('body').on('click', 'span.chat-bubble-option.colors.secondary', function (el) {
             chosenSecondaryColor = $(this).attr("data-color");
-            $(this).addClass('chosen');
             triggerName();
         });
 
@@ -275,8 +281,14 @@ var Norman = function () {
 
         $(document).on("click", "#phone>button", function () {
             phoneNumber = $("#phone input").val();
-            triggerExit();
+            triggerUpload();
         });
+
+        $('#close-upload').on("click", function () {
+            $(".image-upload").css("display", "none");
+
+            triggerExit();
+        })
     }
 
 
@@ -3809,32 +3821,50 @@ exports.isHtml = function(str) {
 module.exports={
   "_args": [
     [
-      "cheerio@0.22.0",
-      "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat"
+      {
+        "raw": "cheerio@^0.22.0",
+        "scope": null,
+        "escapedName": "cheerio",
+        "name": "cheerio",
+        "rawSpec": "^0.22.0",
+        "spec": ">=0.22.0 <0.23.0",
+        "type": "range"
+      },
+      "C:\\Users\\wkaspryk\\Desktop\\hackathon-2019\\CtrlAltDefeat\\CtrlAltDefeat\\CtrlAltDefeat\\node_modules\\meta-scraper"
     ]
   ],
-  "_from": "cheerio@0.22.0",
+  "_from": "cheerio@>=0.22.0 <0.23.0",
   "_id": "cheerio@0.22.0",
-  "_inBundle": false,
-  "_integrity": "sha1-qbqoYKP5tZWmuBsahocxIe06Jp4=",
+  "_inCache": true,
   "_location": "/cheerio",
+  "_nodeVersion": "6.2.2",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cheerio-0.22.0.tgz_1471954900169_0.12557715992443264"
+  },
+  "_npmUser": {
+    "name": "mattmueller",
+    "email": "mattmuelle@gmail.com"
+  },
+  "_npmVersion": "3.10.6",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "cheerio@0.22.0",
-    "name": "cheerio",
+    "raw": "cheerio@^0.22.0",
+    "scope": null,
     "escapedName": "cheerio",
-    "rawSpec": "0.22.0",
-    "saveSpec": null,
-    "fetchSpec": "0.22.0"
+    "name": "cheerio",
+    "rawSpec": "^0.22.0",
+    "spec": ">=0.22.0 <0.23.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/meta-scraper"
   ],
   "_resolved": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz",
-  "_spec": "0.22.0",
-  "_where": "D:\\hackathon\\CtrlAltDefeat\\CtrlAltDefeat",
+  "_shasum": "a9baa860a3f9b595a6b81b1a86873121ed3a269e",
+  "_shrinkwrap": null,
+  "_spec": "cheerio@^0.22.0",
+  "_where": "C:\\Users\\wkaspryk\\Desktop\\hackathon-2019\\CtrlAltDefeat\\CtrlAltDefeat\\CtrlAltDefeat\\node_modules\\meta-scraper",
   "author": {
     "name": "Matt Mueller",
     "email": "mattmuelle@gmail.com",
@@ -3873,6 +3903,11 @@ module.exports={
     "mocha": "^2.5.3",
     "xyz": "~0.5.0"
   },
+  "directories": {},
+  "dist": {
+    "shasum": "a9baa860a3f9b595a6b81b1a86873121ed3a269e",
+    "tarball": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz"
+  },
   "engines": {
     "node": ">= 0.6"
   },
@@ -3880,6 +3915,7 @@ module.exports={
     "index.js",
     "lib"
   ],
+  "gitHead": "35c4917205dca9d08139c95419e2626c0689e38a",
   "homepage": "https://github.com/cheeriojs/cheerio#readme",
   "keywords": [
     "htmlparser",
@@ -3891,7 +3927,27 @@ module.exports={
   ],
   "license": "MIT",
   "main": "./index.js",
+  "maintainers": [
+    {
+      "name": "mattmueller",
+      "email": "mattmuelle@gmail.com"
+    },
+    {
+      "name": "davidchambers",
+      "email": "dc@davidchambers.me"
+    },
+    {
+      "name": "jugglinmike",
+      "email": "mike@mikepennisi.com"
+    },
+    {
+      "name": "feedic",
+      "email": "me@feedic.com"
+    }
+  ],
   "name": "cheerio",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git://github.com/cheeriojs/cheerio.git"
