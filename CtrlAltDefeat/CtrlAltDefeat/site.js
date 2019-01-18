@@ -45,15 +45,13 @@ var Norman = function () {
 
 
     function sendData(data) {
-        console.log(data);
-        $(".main.home").css("display", "none");
-        $(".main.custom").css("display", "block");
-        $(".chatbot").css("display", "none");
-
-     //   var postURL = "http://localhost:19470/Results/SendMetaData";
-        //data = JSON.stringify(data);
+        thinkingBubble(true);
+        setTimeout(function () {
+            $(".main.home").css("display", "none");
+            $(".main.custom").css("display", "block");
+            $(".chatbot").css("display", "none");
+        }, 5000);
         populateFields(data);
-
     }
 
     function hexToRgbA(hex) {
@@ -69,6 +67,7 @@ var Norman = function () {
     }
 
     function populateFields(data) {
+
         var $cards = $(".custom-cards .card-container");
         var opacity = Math.floor(Math.random() * Math.floor(1));
         var bg2 = hexToRgbA(data.bgColor);
@@ -133,29 +132,29 @@ var Norman = function () {
     function triggerName() {
         createChatBubble("", messages.needName);
         var customId = "name";
-        var placeholder = "name";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Name";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerPosition(name) {
         createChatBubble("", messages.needPosition);
         var customId = "position";
-        var placeholder = "position";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Position";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerEmail() {
         createChatBubble("", messages.needEmail);
         var customId = "email";
-        var placeholder = "email";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="email" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Email";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerPhone() {
         createChatBubble("", messages.needPhone);
         var customId = "phone";
-        var placeholder = "phone";
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="tel" placeholder="' + placeholder + '"><button>Send</button></div>');
+        var placeholder = "Your Phone";
+        setTimeout(createInputBubbles(customId, placeholder), 1000);
     }
 
     function triggerExit() {
@@ -215,7 +214,10 @@ var Norman = function () {
     };
 
     function createInputBubbles(customId, placeholder) {
-        $(".chatbox-chat").append('<div class="chat-inputs"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Send</button></div>');
+        $(".chatbox-chat").append('<div class="chat-inputs bubble-hide"id="' + customId + '"><input type="text" placeholder="' + placeholder + '"><button>Done!</button></div>');
+        setTimeout(function () {
+            $(".chat-inputs").addClass("bubble-show");
+        }, 200);
     }
 
     function eventHookups() {
@@ -239,11 +241,13 @@ var Norman = function () {
 
         $('body').on('click', 'span.chat-bubble-option.colors.primary', function (el) {
             chosenPrimaryColor = $(this).attr("data-color");
+            $(this).addClass('chosen');
             triggerSecondaryColours();
         });
 
         $('body').on('click', 'span.chat-bubble-option.colors.secondary', function (el) {
             chosenSecondaryColor = $(this).attr("data-color");
+            $(this).addClass('chosen');
             triggerName();
         });
 
