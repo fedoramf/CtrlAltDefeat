@@ -50,7 +50,7 @@ var Norman = function () {
             $(".main.home").css("display", "none");
             $(".main.custom").css("display", "block");
             $(".chatbot").css("display", "none");
-        }, 5000);
+        }, 3000);
         populateFields(data);
     }
 
